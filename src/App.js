@@ -9,6 +9,7 @@ import  Booking  from './components/Booking';
 import  About  from './components/About';
 import  Login   from './components/Login';
 import  Signup  from './components/Signup';
+import  User  from './components/User';
 import { Contact } from './components/Contact';
 import { NoMatch } from './components/NoMatch';
 import { Layout } from './components/Layout';
@@ -31,6 +32,7 @@ class App extends Component {
               <Route path="/about" component={About} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
+              <Route path="/user" component={User} />
               <Route component={Home} />
             </Switch>
           

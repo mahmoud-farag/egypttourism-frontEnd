@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Logo from '../assets/Img/graduation_logo.png';
+import { TiHome } from "react-icons/ti";
+import { FaUserCircle } from "react-icons/fa";
+
 
 import { Link, NavLink } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
@@ -40,7 +43,7 @@ class NavigationBar extends Component {
 
           <Nav.Item  >
             <Nav.Link >
-              <Link  to="/">الرئيسية</Link>
+              <Link  to="/"><TiHome className="fontEdit" /></Link>
             </Nav.Link>
           </Nav.Item>
 
@@ -85,6 +88,11 @@ class NavigationBar extends Component {
           
           </Nav.Item>
 
+          <Nav.Item  >
+            <Nav.Link >
+              <Link  to="/user"><FaUserCircle className="fontEdit" /></Link>
+            </Nav.Link>
+          </Nav.Item>
 
         </Nav>
       </Navbar.Collapse>
