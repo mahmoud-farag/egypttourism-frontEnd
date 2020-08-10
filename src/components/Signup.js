@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button} from 'react-bootstrap' ;
+import { Alert } from 'reactstrap';
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
@@ -97,6 +98,9 @@ export default class Signup extends React.Component {
               <input type='email' name='email' onChange={this.handleChange} noValidate />
               {errors.email.length > 0 && 
                 <span className='error'>{errors.email}</span>}
+                 <Alert color="danger">
+        هذا البريد الإلكتروني مشترك بالفعل ! __سجل الدخول
+      </Alert>
             </div>
             <div className='password'>
               <label htmlFor="password"><span>كلمة المرور</span></label>
@@ -111,7 +115,9 @@ export default class Signup extends React.Component {
               {errors.confirmPassword.length > 0 && 
                 <span className='error'>{errors.confirmPassword}</span>}
             </div> 
-
+            <div className='email'>
+            <label htmlFor="email" ><span><a href="/login"  className="alert-link">تسجيل الدخول</a></span></label>
+            </div>
             <div className='submit'>
             <Button   variant="warning " >اشتراك</Button>{' '}
             </div>

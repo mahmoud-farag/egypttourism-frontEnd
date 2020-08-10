@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Container, Table } from 'reactstrap';
+import {  Container, Table,  Button, Row, Col } from 'reactstrap';
 class User extends Component {
   render() {
     return (
@@ -25,9 +25,27 @@ class User extends Component {
           <td></td>
           
         </tr>
+
+        <tr >
+          <th scope="row" >
+          <Row>
+        <Col xs="2">
+        <Button color="danger">تسجيل الخروج</Button>{' '}
+        </Col>
+        
+      </Row>
+          </th>
+          
+          
+        </tr>
+
+        
         
       </tbody>
+      
     </Table>
+   
+    
     </Container>
   </div>
 );
