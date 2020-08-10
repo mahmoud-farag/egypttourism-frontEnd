@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Logo from '../assets/Img/graduation_logo.png';
 import { TiHome } from "react-icons/ti";
 import { FaUserCircle } from "react-icons/fa";
-
-
+import { Md3DRotation } from "react-icons/md";
 import { Link, NavLink } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
@@ -49,7 +48,7 @@ class NavigationBar extends Component {
 
           <Nav.Item>
             <Nav.Link>
-              <Link to="/vr">360*</Link>
+              <Link to="/vr"><Md3DRotation className="fontEdit" /></Link>
             </Nav.Link>
           </Nav.Item>
 

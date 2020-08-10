@@ -35,7 +35,7 @@ class App extends Component {
               <Route path="/user" component={User} />
               <Route component={Home} />
             </Switch>
-          
+         
         </Router>
       </React.Fragment>
     );

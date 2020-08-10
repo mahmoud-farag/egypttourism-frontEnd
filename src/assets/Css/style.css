@@ -45,18 +45,16 @@
 }
 
 .tripsBackground{
+  background-image: url("../Img/tripsimg.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+background-size: cover;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-    align-items: center;
-    background-image: url("../Img/tripsimg.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  color: #aaa;
-
+  height: 100%;
+   
+  color: #444;
+ direction: rtl;
+ 
 }
 
 .vrBackground{
@@ -114,11 +112,28 @@ height: 50px;
 }
 
 .fontEdit{
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .userEdit{
   padding-top: 10% ;
   padding-bottom: 50%;
   
+}
+
+.tripsCard{
+  
+  text-align: right;
+  padding-top: 3%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 2%;
+}
+
+.tripsLayout{
+  padding-bottom: 30%;
+}
+.labelColor{
+  color: #444;
+  padding-top: 2%;
 }
