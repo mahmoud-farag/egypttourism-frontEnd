@@ -1,6 +1,7 @@
 .homeBackground{
   
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +14,21 @@
   color: #aaa;
 }
 
+.homeLogo{
+  width: 75%;
+  height: auto;
+  padding-top: 5%;
+  
+}
+.homeCenter1{
+ 
+  font-size: 250%;
+}
+.homeCenter2{
+ 
+  font-size: 200%;
+  padding-bottom: 7%;
+}
 
 .bookingBackground{
   width: 100%;
@@ -75,3 +91,11 @@ color: #aaa;
 .navEdit{
     padding-top: 50px !important;
 }
+
+.navLogo{
+  background-image: url("../Img/graduation_logo.png");
+  background-repeat: no-repeat;
+width: 170px;
+height: 50px;
+}
+

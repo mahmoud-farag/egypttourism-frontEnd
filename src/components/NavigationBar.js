@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Logo from '../assets/Img/graduation_logo.png';
 
 import { Link, NavLink } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
@@ -33,7 +33,7 @@ class NavigationBar extends Component {
     return (
   <Styles>
     <Navbar expand="lg">
-      <Navbar.Brand href="/">EgypTTourism</Navbar.Brand>
+      <Navbar.Brand href="/"><div><img  className="navLogo"  src={Logo} /></div></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
