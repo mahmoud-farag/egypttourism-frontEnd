@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
-
+import Logo from '../assets/Img/graduation_logo.png';
+import { TiHome } from "react-icons/ti";
+import { FaUserCircle } from "react-icons/fa";
+import { Md3DRotation } from "react-icons/md";
 import { Link, NavLink } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
@@ -33,20 +35,20 @@ class NavigationBar extends Component {
     return (
   <Styles>
     <Navbar expand="lg">
-      <Navbar.Brand href="/">EgypTTourism</Navbar.Brand>
+      <Navbar.Brand href="/"><div><img  className="navLogo"  src={Logo} /></div></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
 
           <Nav.Item  >
             <Nav.Link >
-              <Link  to="/">الرئيسية</Link>
+              <Link  to="/"><TiHome className="fontEdit" /></Link>
             </Nav.Link>
           </Nav.Item>
 
           <Nav.Item>
             <Nav.Link>
-              <Link to="/vr">360*</Link>
+              <Link to="/vr"><Md3DRotation className="fontEdit" /></Link>
             </Nav.Link>
           </Nav.Item>
 
@@ -85,6 +87,11 @@ class NavigationBar extends Component {
           
           </Nav.Item>
 
+          <Nav.Item  >
+            <Nav.Link >
+              <Link  to="/user"><FaUserCircle className="fontEdit" /></Link>
+            </Nav.Link>
+          </Nav.Item>
 
         </Nav>
       </Navbar.Collapse>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import axios from "axios";
-
+import { Alert } from 'reactstrap';
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
@@ -131,20 +131,14 @@ export default class Signup extends React.Component {
                 <span className="error">{errors.fullName}</span>
               )}
             </div>
-            <div className="email">
-              <label htmlFor="email">
-                <span>البريد الإلكتروني</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={this.state.email}
-                onChange={this.handleChange}
-                noValidate
-              />
-              {errors.email.length > 0 && (
-                <span className="error">{errors.email}</span>
-              )}
+            <div className='email'>
+              <label htmlFor="email"><span>البريد الإلكتروني</span></label>
+              <input type='email' name='email' onChange={this.handleChange} noValidate />
+              {errors.email.length > 0 && 
+                <span className='error'>{errors.email}</span>}
+                 <Alert color="danger">
+        هذا البريد الإلكتروني مشترك بالفعل ! __سجل الدخول
+      </Alert>
             </div>
             <div className="password">
               <label htmlFor="password">
@@ -162,25 +156,17 @@ export default class Signup extends React.Component {
               )}
             </div>
 
-            <div className="password">
-              <label htmlFor="password">
-                <span>تأكيد كلمة المرور</span>
-              </label>
-              <input
-                type="password"
-                name="confirmPassword"
-                onChange={this.handleChange}
-                noValidate
-              />
-              {errors.confirmPassword.length > 0 && (
-                <span className="error">{errors.confirmPassword}</span>
-              )}
+            <div className='password'>
+              <label htmlFor="password"><span>تأكيد كلمة المرور</span></label>
+              <input type='password' name='confirmPassword' onChange={this.handleChange} noValidate />
+              {errors.confirmPassword.length > 0 && 
+                <span className='error'>{errors.confirmPassword}</span>}
+            </div> 
+            <div className='email'>
+            <label htmlFor="email" ><span><a href="/login"  className="alert-link">تسجيل الدخول</a></span></label>
             </div>
-
-            <div className="submit">
-              <Button type="submit" variant="warning ">
-                اشتراك
-              </Button>{" "}
+            <div className='submit'>
+            <Button   variant="warning " >اشتراك</Button>{' '}
             </div>
           </form>
         </div>

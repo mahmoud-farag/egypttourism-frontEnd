@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Alert } from 'reactstrap';
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -91,19 +92,15 @@ export default class Login extends React.Component {
         <div className="form-wrapper">
           <h2>تسجيل الدخول</h2>
           <form onSubmit={this.handleSubmit} noValidate>
-            <div className="email">
-              <label htmlFor="email">
-                <span>البريد الإلكتروني</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                onChange={this.handleChange}
-                noValidate
-              />
-              {errors.email.length > 0 && (
-                <span className="error">{errors.email}</span>
-              )}
+           
+            <div className='email'>
+              <label htmlFor="email" ><span>البريد الإلكتروني</span></label>
+              <input type='email' name='email' onChange={this.handleChange} noValidate />
+              {errors.email.length > 0 && 
+                <span className='error'>{errors.email}</span>}
+                 <Alert color="danger">
+       هذا البريد الإلكتروني غير مشترك ! __اشترك الآن
+      </Alert>
             </div>
             <div className="password">
               <label htmlFor="password">
@@ -119,16 +116,11 @@ export default class Login extends React.Component {
                 <span className="error">{errors.password}</span>
               )}
             </div>
-            <div className="submit">
-              {/* if the user logged in , then change the signIn button to be 
-                  Link to that user profile */}
-              {this.user ? (
-                <Link to="#">{this.user.data.name}</Link>
-              ) : (
-                <Button type="submit" variant="warning ">
-                  تسجيل
-                </Button>
-              )}
+            <div className='email'>
+            <label htmlFor="email" ><span><a href="/signup"  className="alert-link">اشتراك</a></span></label>
+            </div>
+            <div className='submit'>
+            <Button   variant="warning " >تسجيل</Button>{' '}
             </div>
           </form>
         </div>

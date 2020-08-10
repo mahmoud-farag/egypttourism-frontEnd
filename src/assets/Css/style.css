@@ -1,6 +1,7 @@
 .homeBackground{
   
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +14,21 @@
   color: #aaa;
 }
 
+.homeLogo{
+  width: 75%;
+  height: auto;
+  padding-top: 5%;
+  
+}
+.homeCenter1{
+ 
+  font-size: 250%;
+}
+.homeCenter2{
+ 
+  font-size: 200%;
+  padding-bottom: 40%;
+}
 
 .bookingBackground{
   width: 100%;
@@ -29,18 +45,16 @@
 }
 
 .tripsBackground{
+  background-image: url("../Img/tripsimg.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+background-size: cover;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-    align-items: center;
-    background-image: url("../Img/tripsimg.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  color: #aaa;
-
+  height: 100%;
+   
+  color: #444;
+ direction: rtl;
+ 
 }
 
 .vrBackground{
@@ -55,6 +69,20 @@
 background-size: cover;
 background-position: center;
 color: #aaa;
+}
+.userBackground{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../Img/userimg.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+color: #aaa;
+
 }
 
 .meBtn {
@@ -74,4 +102,38 @@ color: #aaa;
 }
 .navEdit{
     padding-top: 50px !important;
+}
+
+.navLogo{
+  background-image: url("../Img/graduation_logo.png");
+  background-repeat: no-repeat;
+width: 170px;
+height: 50px;
+}
+
+.fontEdit{
+  font-size: 30px;
+}
+
+.userEdit{
+  padding-top: 10% ;
+  padding-bottom: 50%;
+  
+}
+
+.tripsCard{
+  
+  text-align: right;
+  padding-top: 3%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 2%;
+}
+
+.tripsLayout{
+  padding-bottom: 30%;
+}
+.labelColor{
+  color: #444;
+  padding-top: 2%;
 }
