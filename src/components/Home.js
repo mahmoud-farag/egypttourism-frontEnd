@@ -3,7 +3,7 @@ import Logo from '../assets/Img/graduation_logo.png';
 
 
 class Home extends Component {
-  render() {
+  render() {  
     return (
   <div className="homeBackground">
        
@@ -15,7 +15,7 @@ class Home extends Component {
     
 
 );
-}
+    }
 }
 
 export default Home;
