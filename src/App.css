@@ -31,3 +31,24 @@
     transform: rotate(360deg);
   }
 }
+
+/* hide the Alert element in both file login and signUp */
+.alert {
+  display: none;
+}
+
+/* /////////////////////////////////////////////// */
+/* login.js styles */
+/* /////////////////////////////////////////////////// */
+
+#show_login_alert {
+  display: block;
+}
+
+/* /////////////////////////////////////////////// */
+/* signUp.js styles */
+/* /////////////////////////////////////////////////// */
+
+#show_signUp_alert {
+  display: block;
+}

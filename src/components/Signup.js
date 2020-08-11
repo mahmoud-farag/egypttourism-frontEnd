@@ -1,7 +1,11 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import axios from "axios";
-import { Alert } from 'reactstrap';
+import { Alert } from "reactstrap";
+import { SignUpContext } from "./SignUpContext";
+import { register } from "./services/register";
+import "../App.css";
+
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
@@ -11,14 +15,20 @@ const validateForm = (errors) => {
   return valid;
 };
 
+export var manageButtonsAppear = false;
 export default class Signup extends React.Component {
+  static contextType = SignUpContext;
+
   constructor(props) {
     super(props);
+
     this.state = {
       fullName: null,
       email: null,
       password: null,
       confirmPassword: null,
+      response: {},
+      signedUp: false,
       errors: {
         fullName: "",
         email: "",
@@ -65,6 +75,16 @@ export default class Signup extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
+
+    const setIsLoggedIn = this.context.setIsLoggedIn;
+    const setEmail = this.context.setEmail;
+
+    // const setName = this.context.setName;
+    // const setEmail = this.context.setEmail;
+
+    // setName(this.state.name);
+    // setEmail(this.state.email);
+
     if (validateForm(this.state.errors)) {
       console.info("Valid Form");
     } else {
@@ -86,12 +106,17 @@ export default class Signup extends React.Component {
 
       try {
         // http://localhost:4000/signUp
-        const response = await axios.post(
+        this.response = await axios.post(
           "http://localhost:4000/user/signUp",
           newUser
         );
-        console.log(response);
+        if (this.response.data.tokens) {
+          localStorage.setItem("user", JSON.stringify(this.response.data));
+        }
 
+        console.log(this.response);
+        setIsLoggedIn(true);
+        setEmail(this.state.email);
         this.setState({
           fullName: "",
           email: "",
@@ -102,15 +127,14 @@ export default class Signup extends React.Component {
         //redirect to the home page
         this.props.history.push("/");
       } catch (error) {
-        console.log(error.response.data.message);
-        // const response = error.response;
-        // console.log(response.data.errors);
+        console.log(error);
       }
     }
   };
 
   render() {
     const { errors } = this.state;
+
     return (
       <div className="wrapper">
         <div className="form-wrapper">
@@ -131,14 +155,26 @@ export default class Signup extends React.Component {
                 <span className="error">{errors.fullName}</span>
               )}
             </div>
-            <div className='email'>
-              <label htmlFor="email"><span>البريد الإلكتروني</span></label>
-              <input type='email' name='email' onChange={this.handleChange} noValidate />
-              {errors.email.length > 0 && 
-                <span className='error'>{errors.email}</span>}
-                 <Alert color="danger">
-        هذا البريد الإلكتروني مشترك بالفعل ! __سجل الدخول
-      </Alert>
+            <div className="email">
+              <label htmlFor="email">
+                <span>البريد الإلكتروني</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                onChange={this.handleChange}
+                noValidate
+              />
+              {errors.email.length > 0 && (
+                <span className="error">{errors.email}</span>
+              )}
+              <Alert
+                className="alert"
+                id={this.signedUp ? "show_signUp_alert" : ""}
+                color="danger"
+              >
+                هذا البريد الإلكتروني مشترك بالفعل ! __سجل الدخول
+              </Alert>
             </div>
             <div className="password">
               <label htmlFor="password">
@@ -156,17 +192,33 @@ export default class Signup extends React.Component {
               )}
             </div>
 
-            <div className='password'>
-              <label htmlFor="password"><span>تأكيد كلمة المرور</span></label>
-              <input type='password' name='confirmPassword' onChange={this.handleChange} noValidate />
-              {errors.confirmPassword.length > 0 && 
-                <span className='error'>{errors.confirmPassword}</span>}
-            </div> 
-            <div className='email'>
-            <label htmlFor="email" ><span><a href="/login"  className="alert-link">تسجيل الدخول</a></span></label>
+            <div className="password">
+              <label htmlFor="password">
+                <span>تأكيد كلمة المرور</span>
+              </label>
+              <input
+                type="password"
+                name="confirmPassword"
+                onChange={this.handleChange}
+                noValidate
+              />
+              {errors.confirmPassword.length > 0 && (
+                <span className="error">{errors.confirmPassword}</span>
+              )}
             </div>
-            <div className='submit'>
-            <Button   variant="warning " >اشتراك</Button>{' '}
+            <div className="email">
+              <label htmlFor="email">
+                <span>
+                  <a href="/login" className="alert-link">
+                    تسجيل الدخول
+                  </a>
+                </span>
+              </label>
+            </div>
+            <div className="submit">
+              <Button type="submit" variant="warning ">
+                اشتراك
+              </Button>{" "}
             </div>
           </form>
         </div>
@@ -174,3 +226,5 @@ export default class Signup extends React.Component {
     );
   }
 }
+
+// export { Signup, manageButtonsAppear };
