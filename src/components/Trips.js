@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BsTrash } from "react-icons/bs";
 import { Container, Row, Col, Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button, Badge, Form, Label, Input  } from 'reactstrap';
-class Trips extends Component {
-  render() {
+  function Trips () {
+  
     return (
   <div className="tripsBackground">
     <Container >
@@ -57,7 +57,7 @@ class Trips extends Component {
     <div className="tripsLayout"></div>
      </div>
 );
-}
+
 }
 
 export default Trips;

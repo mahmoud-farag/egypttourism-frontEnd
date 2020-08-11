@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Logo from '../assets/Img/graduation_logo.png';
 import { TiHome } from "react-icons/ti";
 import { FaUserCircle } from "react-icons/fa";
@@ -30,8 +30,8 @@ const Styles = styled.div`
   }
 `;
 
-class NavigationBar extends Component {
-  render() {
+function NavigationBar () {
+  
     return (
   <Styles>
     <Navbar expand="lg">
@@ -99,6 +99,6 @@ class NavigationBar extends Component {
   </Styles >
  );
 }
-}
+
 
 export default NavigationBar;

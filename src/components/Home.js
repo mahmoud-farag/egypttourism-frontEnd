@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Logo from '../assets/Img/graduation_logo.png';
 
 
-class Home extends Component {
-  render() {
+function Home() {
+  
     return (
   <div className="homeBackground">
        
@@ -15,7 +15,7 @@ class Home extends Component {
     
 
 );
-}
+
 }
 
 export default Home;

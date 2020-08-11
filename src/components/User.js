@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {  Container, Table,  Button, Row, Col } from 'reactstrap';
-class User extends Component {
-  render() {
+function User () {
     return (
   <div className="userBackground" >
       <Container className="themed-container userEdit" >
@@ -49,7 +48,7 @@ class User extends Component {
     </Container>
   </div>
 );
-}
+
 }
 
 export default User;
