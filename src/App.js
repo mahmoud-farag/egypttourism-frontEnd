@@ -9,7 +9,7 @@ import Booking from "./components/Booking";
 import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Profile from "./components/profile";
+import Profile from "./components/Profile";
 import {} from "./components/Contact";
 import {} from "./components/NoMatch";
 import {} from "./components/Layout";
