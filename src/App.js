@@ -9,7 +9,7 @@ import Booking from "./components/Booking";
 import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import User from "./components/User";
+import Profile from "./components/profile";
 import {} from "./components/Contact";
 import {} from "./components/NoMatch";
 import {} from "./components/Layout";
@@ -31,7 +31,7 @@ function App() {
             <Route path="/about" component={About} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/user" component={User} />
+            <Route path="/profile" component={Profile} />
             <Route component={Home} />
           </Switch>
         </SignUpProvider>

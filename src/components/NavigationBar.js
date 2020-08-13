@@ -37,9 +37,7 @@ function NavigationBar(props) {
   const [name, setName] = useState("");
 
   useEffect((e) => {
-    const data = JSON.parse(localStorage.getItem("user"));
-    console.log(data);
-    setName(data.name || "default");
+    setName(logged.name);
   });
 
   return (
@@ -107,7 +105,7 @@ function NavigationBar(props) {
               <React.Fragment>
                 <Nav.Item>
                   <Nav.Link>
-                    <Link to="/user">
+                    <Link to="/profile">
                       {/* <FaUserCircle className="fontEdit" /> */}
                       {name}
                     </Link>

@@ -15,7 +15,6 @@ const validateForm = (errors) => {
   return valid;
 };
 
-export var manageButtonsAppear = false;
 export default class Signup extends React.Component {
   static contextType = SignUpContext;
 
@@ -27,7 +26,7 @@ export default class Signup extends React.Component {
       email: null,
       password: null,
       confirmPassword: null,
-      response: {},
+
       signedUp: false,
       errors: {
         fullName: "",
@@ -78,12 +77,7 @@ export default class Signup extends React.Component {
 
     const setIsLoggedIn = this.context.setIsLoggedIn;
     const setEmail = this.context.setEmail;
-
-    // const setName = this.context.setName;
-    // const setEmail = this.context.setEmail;
-
-    // setName(this.state.name);
-    // setEmail(this.state.email);
+    const setName = this.context.setName;
 
     if (validateForm(this.state.errors)) {
       console.info("Valid Form");
@@ -106,17 +100,23 @@ export default class Signup extends React.Component {
 
       try {
         // http://localhost:4000/signUp
-        this.response = await axios.post(
+        const response = await axios.post(
           "http://localhost:4000/user/signUp",
           newUser
         );
-        if (this.response.data.tokens) {
-          localStorage.setItem("user", JSON.stringify(this.response.data));
+        if (response.data.tokens) {
+          // localStorage.setItem("user", JSON.stringify(this.response.data));
+          /**after the user stored in the data base
+           * then used the returned name and email and make them global on the
+           * project context to be able to use them in the whole project
+           */
+          setEmail(response.data.email);
+          setName(response.data.name);
+          setIsLoggedIn(true);
         }
 
-        console.log(this.response);
-        setIsLoggedIn(true);
-        setEmail(this.state.email);
+        console.log(response);
+
         this.setState({
           fullName: "",
           email: "",

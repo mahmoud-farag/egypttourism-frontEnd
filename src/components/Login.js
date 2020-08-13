@@ -24,12 +24,11 @@ export default class Login extends React.Component {
       fullName: null,
       email: null,
       password: null,
+
       errors: {
         fullName: "",
         email: "",
         password: "",
-        response: {},
-        emptyUser: false,
       },
     };
   }
@@ -67,6 +66,8 @@ export default class Login extends React.Component {
 
     const setIsLoggedIn = this.context.setIsLoggedIn;
     const setEmail = this.context.setEmail;
+    const setName = this.context.setName;
+
     if (validateForm(this.state.errors)) {
       console.info("Valid Form");
 
@@ -75,18 +76,18 @@ export default class Login extends React.Component {
           email: this.state.email,
           password: this.state.password,
         };
-        this.response = await axios.post(
+        const response = await axios.post(
           "http://localhost:4000/user/login",
           logingData
         );
 
         setIsLoggedIn(true);
-        setEmail(this.state.email);
-        console.log(this.response.data.name);
+        setEmail(response.data.email);
+        setName(response.data.name);
+        console.log(response.data.name);
 
         this.props.history.push("/");
       } catch (error) {
-        console.log(this.response);
         console.log(error);
       }
     } else {
