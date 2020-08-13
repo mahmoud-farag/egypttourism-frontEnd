@@ -27,7 +27,8 @@ export default class Signup extends React.Component {
       password: null,
       confirmPassword: null,
 
-      signedUp: false,
+      userNotExist: false,
+      catchError: "",
       errors: {
         fullName: "",
         email: "",
@@ -99,13 +100,15 @@ export default class Signup extends React.Component {
       console.log(newUser);
 
       try {
-        // http://localhost:4000/signUp
+        // https://egyptourism-api.herokuapp.com/
         const response = await axios.post(
           "http://localhost:4000/user/signUp",
           newUser
         );
+
+       
+
         if (response.data.tokens) {
-          // localStorage.setItem("user", JSON.stringify(this.response.data));
           /**after the user stored in the data base
            * then used the returned name and email and make them global on the
            * project context to be able to use them in the whole project
@@ -127,6 +130,7 @@ export default class Signup extends React.Component {
         //redirect to the home page
         this.props.history.push("/");
       } catch (error) {
+        this.setState({ userNotExist: true });
         console.log(error);
       }
     }
@@ -168,13 +172,17 @@ export default class Signup extends React.Component {
               {errors.email.length > 0 && (
                 <span className="error">{errors.email}</span>
               )}
-              <Alert
-                className="alert"
-                id={this.signedUp ? "show_signUp_alert" : ""}
-                color="danger"
-              >
-                هذا البريد الإلكتروني مشترك بالفعل ! __سجل الدخول
-              </Alert>
+
+              {/* the conditional rendering */}
+              {this.state.userNotExist && (
+                <Alert
+                  className="alert"
+                  // id={ ? "show_signUp_alert" : ""}
+                  color="danger"
+                >
+                  هذا البريد الإلكتروني مشترك بالفعل ! __سجل الدخول
+                </Alert>
+              )}
             </div>
             <div className="password">
               <label htmlFor="password">

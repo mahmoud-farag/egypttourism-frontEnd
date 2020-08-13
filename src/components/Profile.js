@@ -38,17 +38,23 @@ class Profile extends React.Component {
   };
 
   handelSubmit1 = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
+
+    const setIsLoggedIn = this.context.setIsLoggedIn;
+    const setEmail = this.context.setEmail;
+
     try {
       console.log("client email: " + this.state.email);
 
       let deleteEmail = this.state.email;
+      // https://egyptourism-api.herokuapp.com/
       const response = await axios.delete("http://localhost:4000/user/delete", {
         deleteEmail,
       });
 
       console.log(response.data);
-      // logged.setIsLoggedIn(false);
+      setIsLoggedIn(false);
+      setEmail("");
       this.props.history.push("/signup");
     } catch (error) {
       console.log(error);

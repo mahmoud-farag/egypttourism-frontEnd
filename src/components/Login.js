@@ -24,7 +24,7 @@ export default class Login extends React.Component {
       fullName: null,
       email: null,
       password: null,
-
+      userExist: false,
       errors: {
         fullName: "",
         email: "",
@@ -76,6 +76,7 @@ export default class Login extends React.Component {
           email: this.state.email,
           password: this.state.password,
         };
+        // https://egyptourism-api.herokuapp.com/
         const response = await axios.post(
           "http://localhost:4000/user/login",
           logingData
@@ -88,6 +89,7 @@ export default class Login extends React.Component {
 
         this.props.history.push("/");
       } catch (error) {
+        this.setState({ userExist: true });
         console.log(error);
       }
     } else {
@@ -115,14 +117,13 @@ export default class Login extends React.Component {
               {errors.email.length > 0 && (
                 <span className="error">{errors.email}</span>
               )}
-              <Alert
-                className="alert"
-                id={this.response === undefined ? "ahow_login_alert" : ""}
-                color="danger"
-              >
+            </div>
+            {/* the conditional rendering */}
+            {this.state.userExist && (
+              <Alert className="alert" color="danger">
                 هذا البريد الإلكتروني غير مشترك ! __اشترك الآن
               </Alert>
-            </div>
+            )}
             <div className="password">
               <label htmlFor="password">
                 <span>كلمة المرور</span>

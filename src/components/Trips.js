@@ -26,12 +26,13 @@ class Trips extends Component {
     super(props);
     this.state = {
       response: [],
-      _id:''
+      _id: "",
     };
   }
 
   async componentWillMount() {
     try {
+      // https://egyptourism-api.herokuapp.com/
       var result = await axios.get("http://localhost:4000/travels/getTrips");
       this.setState({ response: result.data });
       console.log(this.state.response);
@@ -62,7 +63,7 @@ class Trips extends Component {
                   <CardImg
                     top
                     width="100%"
-                    src={trip.image}
+                    src="https://cors-anywhere.herokuapp.com/{trip.image}"
                     alt=" صورة الرحلة"
                   />
                   <CardBody>
