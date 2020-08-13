@@ -9,7 +9,7 @@ class Home extends Component {
        
        <img  className="homeLogo"  src={Logo} />
       <p className="homeCenter1">!إستمتع معنا في زيارة مصر </p>
-      <p className="homeCenter2">.في أي مكانٍ تحب</p>
+      <p className="homeCenter2">.في أي مكان تحب</p>
      
   </div>
     

@@ -137,3 +137,22 @@ height: 50px;
   color: #444;
   padding-top: 2%;
 }
+
+
+@media only screen and (max-width: 768px) {
+  .homeCenter1{
+ 
+    font-size: 120%;
+  }
+  .homeCenter2{
+   
+    font-size: 90%;
+    padding-bottom: 80%;
+  }
+  .homeLogo{
+    width: 90%;
+    height: auto;
+    padding-top: 25%;
+
+  }
+}
