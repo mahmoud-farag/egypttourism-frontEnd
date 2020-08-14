@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { BsTrash } from "react-icons/bs";
 import {
   Container,
+  Card,
   Row,
   Col,
-  Card,
   CardImg,
   CardText,
   CardBody,
@@ -21,6 +21,8 @@ import data from "../assets/data/tripData";
 import img from "../assets/Img/userimg.jpg";
 import { Link } from "react-router-dom";
 
+import TripCard from "./TripCard";
+
 class Trips extends Component {
   static contextType = SignUpContext;
 
@@ -31,7 +33,7 @@ class Trips extends Component {
       _id: "",
     };
 
-    this.pickTripTitle = this.pickTripTitle.bind(this);
+    // this.pickTripTitle = this.pickTripTitle.bind(this);
   }
 
   async componentWillMount() {
@@ -45,11 +47,11 @@ class Trips extends Component {
     }
   }
 
-  pickTripTitle() {
-    const setTripName = this.context.setTripName;
+  // pickTripTitle() {
+  //   const setTripName = this.context.setTripName;
+  //   setTripName(document.getElementById("cardTitle").textContent);
+  // }
 
-    setTripName(document.getElementById("cardTitle").textContent);
-  }
   render() {
     const email = this.context.email;
 
@@ -58,13 +60,14 @@ class Trips extends Component {
         <Container>
           <Row xs="3">
             {this.state.response.map((trip, index) => (
-              <div className="tripsCard" key={trip._id}>
-                <Card>
+              <div className="tripsCard">
+                <TripCard trip={trip} key={trip._id} tripName={trip.name} />
+              </div>
+
+              /*<div className="tripsCard">
+               <Card key={index}>
                   <Col xs="2">
-                    <form
-                      action="http://localhost:4000/travels/deleteTrip"
-                      method="delete"
-                    >
+                    <form>
                       <input name="_id" type="text" value={trip._id} hidden />
                       <Button color="danger">
                         <BsTrash />
@@ -99,8 +102,8 @@ class Trips extends Component {
                       </Link>
                     </Col>
                   </CardBody>
-                </Card>
-              </div>
+                </Card> 
+              </div>*/
             ))}
           </Row>
         </Container>

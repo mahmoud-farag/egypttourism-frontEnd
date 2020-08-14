@@ -104,6 +104,8 @@ class Profile extends React.Component {
       date: "",
       price: "",
     });
+
+    this.props.history.push("/trips");
   };
 
   render() {

@@ -17,8 +17,9 @@ const Booking = (props) => {
         phone,
         personsNum,
         travelDegree,
-        tripName: logged.tripName
+        tripName: logged.tripName,
       };
+      console.log(newBooking);
       // https://egyptourism-api.herokuapp.com/
       let response = await axios.post(
         "http://localhost:4000/booking/addNewBooking",
@@ -37,7 +38,7 @@ const Booking = (props) => {
     <div className="container">
       <form onSubmit={handelSubmit}>
         <div>
-          <label>ادخل رقم التليفون</label>
+          <label>ادخل رقم التليفون </label>
           <input
             name="phone"
             type="text"
