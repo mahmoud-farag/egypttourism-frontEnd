@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import { Container, Table, Button, Row, Col } from "reactstrap";
 import { SignUpContext } from "./SignUpContext";
 import axios from "axios";
@@ -17,6 +17,8 @@ class Profile extends React.Component {
       description: "",
       date: "",
       price: 0,
+
+      response: [],
     };
 
     this.handelSubmit1 = this.handelSubmit1.bind(this);
@@ -24,13 +26,26 @@ class Profile extends React.Component {
     this.handelChange = this.handelChange.bind(this);
   }
 
-  componentWillMount() {
-    // const data = JSON.parse(localStorage.getItem("user"));
-    // console.log(data);
+  async componentWillMount() {
     this.setState({ Name: this.context.name });
     this.setState({ email: this.context.email });
-    // setName(data.name || "default");
-    // setEmail(data.email || "default");
+
+    /*
+     fetch all trips which that user already book it
+    */
+    try {
+      let email = this.context.email;
+      console.log(email);
+      let result = await axios.post(
+        "http://localhost:4000/booking/getClientBooking",
+        { email }
+      );
+
+      console.log(result.data);
+      this.setState({ response: result.data });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   handelChange = (event) => {
@@ -64,9 +79,6 @@ class Profile extends React.Component {
   handelSubmit2 = async (event) => {
     event.preventDefault();
 
-    // alert(`${this.state.tripImage} : ${this.state.tripName} : ${this.state.tripDescription} : ${this.state.tripDate} :
-
-    //    : ${this.state.tripPrice}`);
     let newTrip = {
       image: this.state.image,
       name: this.state.name,
@@ -194,6 +206,31 @@ class Profile extends React.Component {
               </form>
             </div>
           )}
+
+          {this.state.response.map((booking, index) => (
+            <Table dark className="userEditTable" key={booking._id}>
+              <thead>
+                <tr>
+                  <th>حجز رقم :</th>
+                  <th>{index + 1}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">اسم الرحلة :</th>
+                  <td>{booking.tripName}</td>
+                </tr>
+                <tr>
+                  <th scope="row">عدد افراد هذه الرحلة :</th>
+                  <td>{booking.personsNum}</td>
+                </tr>
+                <tr>
+                  <th scope="row"> درجة السفر :</th>
+                  <td>{booking.travelDegree}</td>
+                </tr>
+              </tbody>
+            </Table>
+          ))}
         </Container>
       </div>
     );

@@ -73,11 +73,14 @@ function NavigationBar(props) {
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item>
+            {
+              logged.email !== 'mahmoud@gmail.com' &&(<Nav.Item>
               <Nav.Link>
                 <Link to="/booking">حجز</Link>
               </Nav.Link>
-            </Nav.Item>
+            </Nav.Item>)
+            }
+            
 
             <Nav.Item>
               <Nav.Link>

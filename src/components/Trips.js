@@ -18,6 +18,8 @@ import {
 import { SignUpContext } from "./SignUpContext";
 import axios from "axios";
 import data from "../assets/data/tripData";
+import img from "../assets/Img/userimg.jpg";
+import { Link } from "react-router-dom";
 
 class Trips extends Component {
   static contextType = SignUpContext;
@@ -28,6 +30,8 @@ class Trips extends Component {
       response: [],
       _id: "",
     };
+
+    this.pickTripTitle = this.pickTripTitle.bind(this);
   }
 
   async componentWillMount() {
@@ -40,8 +44,15 @@ class Trips extends Component {
       console.log(error);
     }
   }
+
+  pickTripTitle() {
+    const setTripName = this.context.setTripName;
+
+    setTripName(document.getElementById("cardTitle").textContent);
+  }
   render() {
-    // const email = this.context.email;
+    const email = this.context.email;
+
     return (
       <div className="tripsBackground">
         <Container>
@@ -63,17 +74,29 @@ class Trips extends Component {
                   <CardImg
                     top
                     width="100%"
-                    src="https://cors-anywhere.herokuapp.com/{trip.image}"
+                    // src="https://cors-anywhere.herokuapp.com/{trip.image}"
+                    src={img}
                     alt=" صورة الرحلة"
                   />
                   <CardBody>
-                    <CardTitle>{trip.name}</CardTitle>
+                    <CardTitle id="cardTitle">{trip.name}</CardTitle>
                     <CardText>{trip.description}</CardText>
                     <CardText className="text-primary">{trip.date}</CardText>
                     <Badge color="primary">{trip.price}$</Badge>
                     <Col xs="6">
-                      {" "}
-                      <Button color="warning">احجز</Button>{" "}
+                      <Link to="/booking">
+                        <Button
+                          color={
+                            email === "mahmoud@gmail.com" ? "danger" : "warning"
+                          }
+                          onClick={this.pickTripTitle}
+                          disabled={
+                            email === "mahmoud@gmail.com" ? true : false
+                          }
+                        >
+                          احجز
+                        </Button>
+                      </Link>
                     </Col>
                   </CardBody>
                 </Card>
