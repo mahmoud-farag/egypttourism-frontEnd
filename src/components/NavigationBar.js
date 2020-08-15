@@ -61,8 +61,9 @@ function NavigationBar(props) {
 
             <Nav.Item>
               <Nav.Link>
-                <Link to="/vr">
+                <Link><a href="https://hungry-bohr-401e0f.netlify.app/">
                   <Md3DRotation className="fontEdit" />
+                  </a>
                 </Link>
               </Nav.Link>
             </Nav.Item>
@@ -82,11 +83,6 @@ function NavigationBar(props) {
             }
             
 
-            <Nav.Item>
-              <Nav.Link>
-                <Link to="/about">عنا</Link>
-              </Nav.Link>
-            </Nav.Item>
 
             {!logged.isLoggedIn ? (
               <React.Fragment>
