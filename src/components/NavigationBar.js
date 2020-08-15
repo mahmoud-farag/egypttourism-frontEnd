@@ -61,9 +61,9 @@ function NavigationBar(props) {
 
             <Nav.Item>
               <Nav.Link>
-                <Link><a href="https://hungry-bohr-401e0f.netlify.app/">
+                <Link to="https://hungry-bohr-401e0f.netlify.app/">
                   <Md3DRotation className="fontEdit" />
-                  </a>
+                 
                 </Link>
               </Nav.Link>
             </Nav.Item>
