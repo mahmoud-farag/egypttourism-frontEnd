@@ -12,6 +12,7 @@ export const SignUpProvider = (props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [tripName, setTripName] = useState("");
+  const [trips, setTrips] = useState([]);
 
   var logged = {
     isLoggedIn,
@@ -22,6 +23,8 @@ export const SignUpProvider = (props) => {
     setName,
     tripName,
     setTripName,
+    trips,
+    setTrips,
   };
   //   function isLoggedIn(bool = false) {
   //     return bool;

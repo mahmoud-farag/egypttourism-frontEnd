@@ -19,8 +19,9 @@ import img from "../assets/Img/userimg.jpg";
 import { Link } from "react-router-dom";
 import { SignUpContext } from "./SignUpContext";
 import TripCardButton from "./TripCardButton";
+import TripCardDeleteButton from "./TripCardDeleteButton";
 
-const TripCard = ({ trip, key, tripName }) => {
+const TripCard = ({ trip, tripCardKey, tripName }) => {
   const logged = useContext(SignUpContext);
   // console.log("from tripCard: " + tripName);
   // console.log("from tripCard: " + trip.tripName);
@@ -29,18 +30,20 @@ const TripCard = ({ trip, key, tripName }) => {
     <Card>
       {logged.email === "mahmoud@gmail.com" && (
         <Col xs="2">
-          <form>
-            <input name="_id" type="text" value={trip._id} hidden />
+          {/* <form>
+            <input name="_id" type="text" value={tripCardkey} hidden />
             <Button color="danger">
               <BsTrash />
-            </Button>{" "}
-          </form>
+            </Button>
+          </form> */}
+          <TripCardDeleteButton tripCardKey={tripCardKey} tripName={tripName} />
         </Col>
       )}
       <CardImg
         top
         width="100%"
         // src="https://cors-anywhere.herokuapp.com/{trip.image}"
+        // src="https://unsplash.com/photos/HcgK4WoBwzg"
         src={img}
         alt=" صورة الرحلة"
       />

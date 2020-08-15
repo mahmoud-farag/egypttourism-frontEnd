@@ -106,8 +106,6 @@ export default class Signup extends React.Component {
           newUser
         );
 
-       
-
         if (response.data.tokens) {
           /**after the user stored in the data base
            * then used the returned name and email and make them global on the

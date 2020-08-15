@@ -37,31 +37,39 @@ class Trips extends Component {
   }
 
   async componentWillMount() {
+    const setTrips = this.context.setTrips;
+
     try {
       // https://egyptourism-api.herokuapp.com/
-      var result = await axios.get("http://localhost:4000/travels/getTrips");
-      this.setState({ response: result.data });
+      var result = await axios.get("http://localhost:4000/travels/getTrips", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      setTrips(result.data);
       console.log(this.state.response);
     } catch (error) {
       console.log(error);
     }
   }
 
-  // pickTripTitle() {
-  //   const setTripName = this.context.setTripName;
-  //   setTripName(document.getElementById("cardTitle").textContent);
-  // }
+  async getTripsFunc() {}
 
   render() {
+    //global States
     const email = this.context.email;
-
+    const trips = this.context.trips;
     return (
       <div className="tripsBackground">
         <Container>
           <Row xs="3">
-            {this.state.response.map((trip, index) => (
+            {trips.map((trip, index) => (
               <div className="tripsCard">
-                <TripCard trip={trip} key={trip._id} tripName={trip.name} />
+                <TripCard
+                  trip={trip}
+                  tripCardKey={trip._id}
+                  tripName={trip.name}
+                />
               </div>
 
               /*<div className="tripsCard">

@@ -141,7 +141,7 @@ class Profile extends React.Component {
                         />
                         <Button type="submit" color="danger">
                           تسجيل الخروج
-                        </Button>{" "}
+                        </Button>
                       </form>
                     </Col>
                   </Row>
