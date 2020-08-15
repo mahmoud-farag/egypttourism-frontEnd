@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Table, Button, Row, Col } from "reactstrap";
 import { SignUpContext } from "./SignUpContext";
 import axios from "axios";
-import {BsTrash } from "react-icons/bs";
+import { BsTrash } from "react-icons/bs";
 
 class Profile extends React.Component {
   static contextType = SignUpContext;
@@ -152,8 +152,8 @@ class Profile extends React.Component {
           </Table>
           {/* the conditional rendering */}
           {this.state.email === "mahmoud@gmail.com" && (
-             <div className="form-wrapper">
-             <h2>نشر رحلة</h2>
+            <div className="form-wrapper">
+              <h2>نشر رحلة</h2>
               <form onSubmit={this.handelSubmit2}>
                 <div>
                   <label>ادخل لينك الصورة</label>
@@ -205,49 +205,47 @@ class Profile extends React.Component {
                   />
                 </div>
                 <div className="submit">
-              <Button type="submit" color="warning ">
-               إنشر
-              </Button>
-            </div>
+                  <Button type="submit" color="warning ">
+                    إنشر
+                  </Button>
+                </div>
               </form>
             </div>
           )}
 
           {this.state.response.map((booking, index) => (
             <div className="tableEdit">
-            <Table striped   key={booking._id}>
-              <thead>
-                <tr>
-                  <th>حجز رقم :</th>
-                  <th>{index + 1}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">اسم الرحلة :</th>
-                  <td>{booking.tripName}</td>
-                </tr>
-                <tr>
-                  <th scope="row">عدد افراد هذه الرحلة :</th>
-                  <td>{booking.personsNum}</td>
-                </tr>
-                <tr>
-                  <th scope="row"> درجة السفر :</th>
-                  <td>{booking.travelDegree}</td>
-                </tr>
-              <tr>
-               
-        <Col xs="3">
-          <form>
-            <Button color="danger">
-              <BsTrash />
-            </Button>{" "}
-          </form>
-        </Col>
-    
-      </tr>
-              </tbody>
-            </Table>
+              <Table striped key={booking._id}>
+                <thead>
+                  <tr>
+                    <th>حجز رقم :</th>
+                    <th>{index + 1}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">اسم الرحلة :</th>
+                    <td>{booking.tripName}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">عدد افراد هذه الرحلة :</th>
+                    <td>{booking.personsNum}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"> درجة السفر :</th>
+                    <td>{booking.travelDegree}</td>
+                  </tr>
+                  <tr>
+                    <Col xs="3">
+                      <form>
+                        <Button color="danger" disabled={true}>
+                          <BsTrash />
+                        </Button>{" "}
+                      </form>
+                    </Col>
+                  </tr>
+                </tbody>
+              </Table>
             </div>
           ))}
         </Container>
