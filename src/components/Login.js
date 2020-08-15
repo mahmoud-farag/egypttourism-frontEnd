@@ -150,7 +150,7 @@ export default class Login extends React.Component {
             <div className="submit">
               <Button type="submit" variant="warning ">
                 تسجيل
-              </Button>{" "}
+              </Button>
             </div>
           </form>
         </div>

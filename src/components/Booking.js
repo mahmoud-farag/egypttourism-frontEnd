@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { SignUpContext } from "./SignUpContext";
 import axios from "axios";
-
+import { Button } from "react-bootstrap";
 const Booking = (props) => {
   const [phone, setPhone] = useState("");
   const [personsNum, setPersonsNum] = useState("");
@@ -35,8 +35,12 @@ const Booking = (props) => {
     setTravelDegree(0);
   };
   return (
-    <div className="container">
+    <div className="bookingBackground ">
+        
+     <div className="form-wrapper">
+     <h2>إحجز الآن</h2>
       <form onSubmit={handelSubmit}>
+     
         <div>
           <label>ادخل رقم التليفون </label>
           <input
@@ -65,10 +69,16 @@ const Booking = (props) => {
           />
         </div>
 
-        <div>
-          <button type="submit"> حجز</button>
-        </div>
+        <div className="submit">
+              <Button type="submit" variant="warning ">
+                إحجز
+              </Button>
+            </div>
       </form>
+     
+      </div>
+          
+    
     </div>
   );
 };

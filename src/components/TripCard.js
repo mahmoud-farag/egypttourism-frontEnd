@@ -15,7 +15,7 @@ import {
   Input,
 } from "reactstrap";
 import { BsTrash } from "react-icons/bs";
-import img from "../assets/Img/userimg.jpg";
+import img from "../assets/Img/trip.jpg";
 import { Link } from "react-router-dom";
 import { SignUpContext } from "./SignUpContext";
 import TripCardButton from "./TripCardButton";
@@ -48,10 +48,10 @@ const TripCard = ({ trip, tripCardKey, tripName }) => {
         alt=" صورة الرحلة"
       />
       <CardBody>
-        <CardTitle id="cardTitle">{trip.name}</CardTitle>
+      <h2>   <CardTitle id="cardTitle">{trip.name}</CardTitle></h2>
         <CardText>{trip.description}</CardText>
-        <CardText className="text-primary">{trip.date}</CardText>
-        <Badge color="primary">{trip.price}$</Badge>
+        <h5><CardText className="text-primary">{trip.date}</CardText></h5>
+      <h2>  <Badge color="primary">{trip.price}$</Badge></h2>
         <Col xs="6">
           <Link to="/booking">
             <TripCardButton tripName={tripName} />
