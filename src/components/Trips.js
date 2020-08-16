@@ -58,7 +58,7 @@ class Trips extends Component {
     return (
       <div className="tripsBackground">
         <Container>
-          <Row xs="3">
+          <Row xs="2">
             {this.state.response.map((trip, index) => (
               <div className="tripsCard">
                 <TripCard trip={trip} key={trip._id} tripName={trip.name} />

@@ -142,6 +142,10 @@ height: 50px;
   padding-top: 2%;
 }
 
+.tableEdit{
+  background-color: #fff !important;
+
+}
 
 @media only screen and (max-width: 768px) {
   .homeCenter1{

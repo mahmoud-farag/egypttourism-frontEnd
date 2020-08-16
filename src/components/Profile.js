@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Table, Button, Row, Col } from "reactstrap";
 import { SignUpContext } from "./SignUpContext";
 import axios from "axios";
+import {BsTrash } from "react-icons/bs";
 
 class Profile extends React.Component {
   static contextType = SignUpContext;
@@ -131,7 +132,7 @@ class Profile extends React.Component {
               <tr>
                 <th scope="row">
                   <Row>
-                    <Col xs="2">
+                    <Col xs="3">
                       <form onSubmit={this.handelSubmit1}>
                         <input
                           name="email"
@@ -151,7 +152,8 @@ class Profile extends React.Component {
           </Table>
           {/* the conditional rendering */}
           {this.state.email === "mahmoud@gmail.com" && (
-            <div className="tripsCard">
+             <div className="form-wrapper">
+             <h2>نشر رحلة</h2>
               <form onSubmit={this.handelSubmit2}>
                 <div>
                   <label>ادخل لينك الصورة</label>
@@ -174,7 +176,7 @@ class Profile extends React.Component {
                 </div>
 
                 <div>
-                  <label>ادخل نبذة مختصرة عن الرحلة</label>
+                  <label>ادخل وصف الرحلة</label>
                   <input
                     type="text"
                     name="description"
@@ -202,15 +204,18 @@ class Profile extends React.Component {
                     onChange={this.handelChange}
                   />
                 </div>
-                <div>
-                  <button type="submit">Submit</button>
-                </div>
+                <div className="submit">
+              <Button type="submit" color="warning ">
+               إنشر
+              </Button>
+            </div>
               </form>
             </div>
           )}
 
           {this.state.response.map((booking, index) => (
-            <Table dark className="userEditTable" key={booking._id}>
+            <div className="tableEdit">
+            <Table striped   key={booking._id}>
               <thead>
                 <tr>
                   <th>حجز رقم :</th>
@@ -230,8 +235,20 @@ class Profile extends React.Component {
                   <th scope="row"> درجة السفر :</th>
                   <td>{booking.travelDegree}</td>
                 </tr>
+              <tr>
+               
+        <Col xs="3">
+          <form>
+            <Button color="danger">
+              <BsTrash />
+            </Button>{" "}
+          </form>
+        </Col>
+    
+      </tr>
               </tbody>
             </Table>
+            </div>
           ))}
         </Container>
       </div>

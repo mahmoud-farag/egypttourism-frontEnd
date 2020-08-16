@@ -32,7 +32,10 @@ const Styles = styled.div`
   }
 `;
 
+
 function NavigationBar(props) {
+
+  
   const logged = useContext(SignUpContext);
   const [name, setName] = useState("");
 
@@ -59,11 +62,12 @@ function NavigationBar(props) {
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item>
+            <Nav.Item >
               <Nav.Link>
-                <Link to="https://hungry-bohr-401e0f.netlify.app/">
-                  <Md3DRotation className="fontEdit" />
-                 
+                <Link >
+                
+                  <a href="https://hungry-bohr-401e0f.netlify.app/">
+     <Md3DRotation className="fontEdit" /></a>
                 </Link>
               </Nav.Link>
             </Nav.Item>
