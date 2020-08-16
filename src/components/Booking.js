@@ -23,8 +23,9 @@ const Booking = (props) => {
       };
       console.log(newBooking);
       // https://egyptourism-api.herokuapp.com/
+      // http://localhost:4000
       let response = await axios.post(
-        "http://localhost:4000/booking/addNewBooking",
+        "https://egyptourism-api.herokuapp.com/booking/addNewBooking",
         newBooking
       );
 

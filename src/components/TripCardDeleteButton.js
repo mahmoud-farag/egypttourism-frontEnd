@@ -19,8 +19,10 @@ const TripCardDeleteButton = ({ tripCardKey, tripName }) => {
       console.log("tripCardKey:" + tripCardKey); // tripCardKey: 5f37fe1f7fc62417685461cb
 
       //the delete axios request on handelSubmit
+       // https://egyptourism-api.herokuapp.com/
+        // http://localhost:4000
       let result = await axios.delete(
-        "http://localhost:4000/travels/deleteTrip",
+        "https://egyptourism-api.herokuapp.com/travels/deleteTrip",
         {
           headers: {
             Authorization: "authorizationToken",
@@ -36,8 +38,9 @@ const TripCardDeleteButton = ({ tripCardKey, tripName }) => {
       if (result) {
         try {
           // https://egyptourism-api.herokuapp.com/
+        // http://localhost:4000
           var response = await axios.get(
-            "http://localhost:4000/travels/getTrips"
+            "https://egyptourism-api.herokuapp.com/travels/getTrips"
           );
           logged.setTrips(response.data);
         } catch (error) {

@@ -34,11 +34,14 @@ class Profile extends React.Component {
     /*
      fetch all trips which that user already book it
     */
+
+    // https://egyptourism-api.herokuapp.com/
+    // http://localhost:4000
     try {
       let email = this.context.email;
       console.log(email);
       let result = await axios.post(
-        "http://localhost:4000/booking/getClientBooking",
+        "https://egyptourism-api.herokuapp.com/booking/getClientBooking",
         { email }
       );
 
@@ -64,9 +67,12 @@ class Profile extends React.Component {
 
       let deleteEmail = this.state.email;
       // https://egyptourism-api.herokuapp.com/
-      const response = await axios.delete("http://localhost:4000/user/delete", {
-        deleteEmail,
-      });
+      const response = await axios.delete(
+        "https://egyptourism-api.herokuapp.com/user/delete",
+        {
+          deleteEmail,
+        }
+      );
 
       console.log(response.data);
       setIsLoggedIn(false);
@@ -90,7 +96,7 @@ class Profile extends React.Component {
 
     try {
       let response = await axios.post(
-        "http://localhost:4000/travels/addTrip",
+        "https://egyptourism-api.herokuapp.com/travels/addTrip",
         newTrip
       );
       console.log(response);

@@ -41,7 +41,8 @@ class Trips extends Component {
 
     try {
       // https://egyptourism-api.herokuapp.com/
-      var result = await axios.get("http://localhost:4000/travels/getTrips", {
+        // http://localhost:4000
+      var result = await axios.get(" https://egyptourism-api.herokuapp.com/travels/getTrips", {
         headers: {
           "Access-Control-Allow-Origin": "*",
         },

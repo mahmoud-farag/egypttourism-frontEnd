@@ -101,8 +101,9 @@ export default class Signup extends React.Component {
 
       try {
         // https://egyptourism-api.herokuapp.com/
+        // http://localhost:4000
         const response = await axios.post(
-          "http://localhost:4000/user/signUp",
+          "https://egyptourism-api.herokuapp.com/user/signUp",
           newUser
         );
 
